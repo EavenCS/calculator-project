@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets\style.css">
+    <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -19,24 +19,24 @@
         </div>
         
         <div class="calculation-part">
-            <h2><i class="fas fa-percentage"></i>  Teil 2 Prüfungsbereiche 3, 4, 5 (30%)            </h2>
-            <input type="number" id="examinationOne" placeholder="Punkte/Prozente">
+            <h2><i class="fas fa-percentage"></i> Teil 2 Prüfungsbereiche 3, 4, 5 (30%)</h2>
+            <input type="number" id="examinationTwo" placeholder="Punkte/Prozente">
             <input type="text" placeholder="Note PB 3">
-            <input type="number" id="examinationOne" placeholder="Punkte/Prozente">
+            <input type="number" id="examinationTwo" placeholder="Punkte/Prozente">
             <input type="text" placeholder="Note PB 4">
-            <input type="number" id="examinationOne" placeholder="Punkte/Prozente">
+            <input type="number" id="examinationTwo" placeholder="Punkte/Prozente">
             <input type="text" placeholder="Note PB 5">
         </div>
 
         <div class="calculation-part">
-            <h2><i class="fas fa-percentage"></i>  Teil 2 Prüfungsbereiche 3, 4, 5 (30%)</h2>
-            <input type="number" id="examinationOne" placeholder="Doku">
-            <input type="number" id="examinationOne" placeholder="Präsentation">
+            <h2><i class="fas fa-percentage"></i> Teil 2 Prüfungsbereiche 3, 4, 5 (30%)</h2>
+            <input type="number" id="examinationThree" placeholder="Doku">
+            <input type="number" id="examinationThree" placeholder="Präsentation">
             <input type="text" placeholder="Note PB 2">
             <input type="text" placeholder="Note PB 2">
         </div>
 
-        <div class="calculation-part" >
+        <div class="calculation-part">
             <h2><i class="fas fa-percentage"></i> Teil 2 Ergänzungsprüfung</h2>
             <input type="number" placeholder="% PB 3" disabled>
             <input type="number" placeholder="% PB 4" disabled>
@@ -45,23 +45,29 @@
             <p>(Max. ein Feld ändern!)</p>
         </div>
     </div>
-    <div class="result-section">
-        <h2><i class="fas fa-chart-line"></i> Ergebnis Teil 2</h2>
-        <input type="number" placeholder="%">
-        <input type="text" placeholder="Note">
-        <h2><i class="fas fa-chart-pie"></i> Gesamtergebnis</h2>
-        <input type="number" placeholder="%">
-        <input type="text" placeholder="Note">
-        <label>
-            <input type="checkbox"> Zehntelnoten
-        </label>
+    <div class="container result-section">
+        <div class="result-part">
+            <h2><i class="fas fa-chart-line"></i> Ergebnis Teil 2</h2>
+            <input type="number" placeholder="%">
+            <input type="text" placeholder="Note">
+        </div>
+        <div class="result-part">
+            <h2><i class="fas fa-chart-pie"></i> Gesamtergebnis</h2>
+            <input type="number" placeholder="%">
+            <input type="text" placeholder="Note">
+            <label>
+                <input type="checkbox"> Zehntelnoten
+            </label>
+        </div>
     </div>
-    <div class="terminal">
-        <p id="terminal-text">Ergänzungsprüfung nicht zulässig!</p>
-    </div>
-    <div class="adsense">
-        <!-- Platzhalter für Google AdSense-Banner -->
-        <p>Anzeige</p>
+    <div class="container">
+        <div class="terminal">
+            <p id="terminal-text">Ergänzungsprüfung nicht zulässig!</p>
+        </div>
+        <div class="adsense">
+            <!-- Platzhalter für Google AdSense-Banner -->
+            <p>Anzeige</p>
+        </div>
     </div>
 </body>
 </html>

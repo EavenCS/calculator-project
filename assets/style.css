@@ -37,7 +37,7 @@ p {
     justify-content: space-between;
 }
 
-.calculation-part {
+.calculation-part, .result-part {
     flex: 1 1 45%;
     margin: 10px;
     padding: 20px;
@@ -47,14 +47,14 @@ p {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.calculation-part h2 {
+.calculation-part h2, .result-part h2 {
     font-size: 1.2em;
     margin-bottom: 15px;
     color: #333;
 }
 
 .calculation-part input,
-.result-section input {
+.result-part input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -62,6 +62,7 @@ p {
     border-radius: 5px;
     background-color: #fff;
     color: #333;
+    box-sizing: border-box; /* Ensures padding is included in width */
 }
 
 button {
@@ -80,8 +81,9 @@ button:hover {
 }
 
 .result-section {
-    text-align: center;
-    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .terminal {
@@ -106,4 +108,34 @@ button:hover {
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .calculation-part, .result-part {
+        flex: 1 1 100%;
+        margin: 10px 0;
+    }
+
+    .container {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    button {
+        padding: 8px;
+    }
+
+    .terminal, .adsense {
+        padding: 15px;
+    }
 }
