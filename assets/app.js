@@ -60,12 +60,40 @@ function calculateExaminationTwoGrades() {
     calculateTotalResult();
 }
 
+function calculateProjectWorkGrades() {
+    const dokuInput = document.getElementById('examinationThreeDoku');
+    const praesInput = document.getElementById('examinationThreePraes');
+
+    if (!dokuInput || !praesInput) {
+        console.error("Input fields for project work not found.");
+        return;
+    }
+
+    const dokuPoints = validateInput(parseFloat(dokuInput.value)) || 0;
+    const praesPoints = validateInput(parseFloat(praesInput.value)) || 0;
+
+    dokuInput.value = dokuPoints;
+    praesInput.value = praesPoints;
+
+    const dokuGrade = calculateGrade(dokuPoints);
+    const praesGrade = calculateGrade(praesPoints);
+
+    document.getElementById('notePB2a').value = dokuGrade.toFixed(1);
+    document.getElementById('notePB2b').value = praesGrade.toFixed(1);
+
+    calculateTotalResult();
+}
+
 function calculateTotalResult() {
     const pb1Points = parseFloat(document.getElementById('examinationOne').value) || 0;
     const pb2Points = parseFloat(document.getElementById('resultPart2').value) || 0;
-    
-    // Gewichtung: PB1 (20%), PB2-5 (30%)
-    const totalPoints = (pb1Points * 0.2) + (pb2Points * 0.3);
+    const dokuPoints = parseFloat(document.getElementById('examinationThreeDoku').value) || 0;
+    const praesPoints = parseFloat(document.getElementById('examinationThreePraes').value) || 0;
+
+    const projectWorkAverage = (dokuPoints + praesPoints) / 2;
+
+    // Gewichtung: PB1 (20%), PB2-5 (30%), Projektarbeit (50%)
+    const totalPoints = (pb1Points * 0.2) + (pb2Points * 0.3) + (projectWorkAverage * 0.5);
     
     document.getElementById('totalResult').value = totalPoints.toFixed(1);
     
@@ -79,6 +107,34 @@ function calculateTotalResult() {
     }
     
     document.getElementById('noteTotalResult').value = totalGrade.toFixed(1);
+
+    checkSupplementaryExam();
+    displayPassOrFail(totalPoints, totalGrade);
+}
+
+function checkSupplementaryExam() {
+    const pb3 = parseFloat(document.getElementById('examinationTwoPB3').value) || 0;
+    const pb4 = parseFloat(document.getElementById('examinationTwoPB4').value) || 0;
+    const pb5 = parseFloat(document.getElementById('examinationTwoPB5').value) || 0;
+
+    const conditionsMet = (pb3 >= 30 && pb3 < 50) || (pb4 >= 30 && pb4 < 50) || (pb5 >= 30 && pb5 < 50);
+    const supplementaryText = document.getElementById('terminal-text');
+
+    if (conditionsMet) {
+        supplementaryText.textContent = "Ergänzungsprüfung zulässig!";
+    } else {
+        supplementaryText.textContent = "Ergänzungsprüfung nicht zulässig!";
+    }
+}
+
+function displayPassOrFail(totalPoints, totalGrade) {
+    const terminalText = document.getElementById('terminal-text');
+
+    if (totalPoints >= 50 && totalGrade <= 4.0) {
+        terminalText.textContent = "Bestanden";
+    } else {
+        terminalText.textContent = "Nicht bestanden";
+    }
 }
 
 function addEventListeners() {
@@ -86,13 +142,23 @@ function addEventListeners() {
         'examinationOne',
         'examinationTwoPB3',
         'examinationTwoPB4',
-        'examinationTwoPB5'
+        'examinationTwoPB5',
+        'examinationThreeDoku',
+        'examinationThreePraes'
     ];
 
     inputs.forEach(inputId => {
         const input = document.getElementById(inputId);
         if (input) {
-            input.addEventListener('input', inputId === 'examinationOne' ? calculateExaminationOneGrade : calculateExaminationTwoGrades);
+            input.addEventListener('input', () => {
+                if (inputId === 'examinationOne') {
+                    calculateExaminationOneGrade();
+                } else if (inputId === 'examinationThreeDoku' || inputId === 'examinationThreePraes') {
+                    calculateProjectWorkGrades();
+                } else {
+                    calculateExaminationTwoGrades();
+                }
+            });
         } else {
             console.error(`Input field '${inputId}' not found.`);
         }
@@ -110,6 +176,35 @@ function addEventListeners() {
         useDecimalGrades.addEventListener('change', calculateTotalResult);
     } else {
         console.error("Checkbox 'useDecimalGrades' not found.");
+    }
+
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+    } else {
+        console.error("Button 'darkModeToggle' not found.");
+    }
+
+    // Set initial theme based on localStorage
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+}
+
+function toggleDarkMode() {
+    const body = document.body;
+    const darkModeToggle = document.getElementById('darkModeToggle');
+
+    body.classList.toggle('dark-mode');
+
+    if (body.classList.contains('dark-mode')) {
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        localStorage.setItem('theme', 'light');
     }
 }
 

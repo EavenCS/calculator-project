@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/dark-mode.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Notenrechner-IT Berufe</title>
     <!-- Favicon einbinden -->
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
 </head>
 <body>
+    <header>
+        <button id="darkModeToggle" class="dark-mode-toggle"><i class="fas fa-moon"></i></button>
+    </header>
     <div class="container">
         <h1><i class="fas fa-calculator"></i> Notenrechner-IT Berufe</h1>
         <p>
@@ -17,22 +21,22 @@
         </p>
         <div class="calculation-part">
             <h2><i class="fas fa-percentage"></i> Teil 1 Prüfungsbereich 1 (20%)</h2>
-            <input type="number" id="examinationOne" placeholder="Punkte/Prozente" max="100">
+            <input type="number" id="examinationOne" placeholder="Prozentpunkte" max="100">
             <input type="text" id="notePB1" placeholder="Note PB 1" readonly>
         </div>
         
         <div class="calculation-part">
             <h2><i class="fas fa-percentage"></i> Teil 2 Prüfungsbereiche 3, 4, 5 (30%)</h2>
-            <input type="number" id="examinationTwoPB3" placeholder="Punkte/Prozente" max="100">
+            <input type="number" id="examinationTwoPB3" placeholder="Prozentpunkte" max="100">
             <input type="text" id="notePB3" placeholder="Note PB 3" readonly>
-            <input type="number" id="examinationTwoPB4" placeholder="Punkte/Prozente" max="100">
+            <input type="number" id="examinationTwoPB4" placeholder="Prozentpunkte" max="100">
             <input type="text" id="notePB4" placeholder="Note PB 4" readonly>
-            <input type="number" id="examinationTwoPB5" placeholder="Punkte/Prozente" max="100">
+            <input type="number" id="examinationTwoPB5" placeholder="Prozentpunkte" max="100">
             <input type="text" id="notePB5" placeholder="Note PB 5" readonly>
         </div>
 
         <div class="calculation-part">
-            <h2><i class="fas fa-percentage"></i> Teil 2 Prüfungsbereiche 3, 4, 5 (30%)</h2>
+            <h2><i class="fas fa-percentage"></i> Teil 2 Projektarbeit (50%)</h2>
             <input type="number" id="examinationThreeDoku" placeholder="Doku" max="100">
             <input type="number" id="examinationThreePraes" placeholder="Präsentation" max="100">
             <input type="text" id="notePB2a" placeholder="Note PB 2" readonly>
@@ -41,9 +45,9 @@
 
         <div class="calculation-part">
             <h2><i class="fas fa-percentage"></i> Teil 2 Ergänzungsprüfung</h2>
-            <input type="number" id="supplementPB3" placeholder="% PB 3" disabled >
-            <input type="number" id="supplementPB4" placeholder="% PB 4" disabled >
-            <input type="number" id="supplementPB5" placeholder="% PB 5" disabled >
+            <input type="number" id="supplementPB3" placeholder="% PB 3" disabled>
+            <input type="number" id="supplementPB4" placeholder="% PB 4" disabled>
+            <input type="number" id="supplementPB5" placeholder="% PB 5" disabled>
             <button id="calculateButton"><i class="fas fa-sync-alt"></i> Click</button>
             <p>(Max. ein Feld ändern!)</p>
         </div>
@@ -51,12 +55,12 @@
     <div class="container result-section">
         <div class="result-part">
             <h2><i class="fas fa-chart-line"></i> Ergebnis Teil 2</h2>
-            <input type="number" id="resultPart2" placeholder="%">
+            <input type="text" id="resultPart2" placeholder="%" readonly>
             <input type="text" id="noteResultPart2" placeholder="Note" readonly>
         </div>
         <div class="result-part">
             <h2><i class="fas fa-chart-pie"></i> Gesamtergebnis</h2>
-            <input type="number" id="totalResult" placeholder="%">
+            <input type="text" id="totalResult" placeholder="%" readonly>
             <input type="text" id="noteTotalResult" placeholder="Note" readonly>
             <label>
                 <input type="checkbox" id="useDecimalGrades"> Zehntelnoten
@@ -72,7 +76,15 @@
             <p>Anzeige</p>
         </div>
     </div>
-
     <script src="assets/app.js"></script>
 </body>
+
+<footer>
+    <div class="footer">
+        <p>&copy; 2024 Eaven Schmalz Notenrechner-IT Berufe</p>
+        <p>Quelle zu der Berechnung von den Notenrechner-IT Berufe:
+            <a href="https://www.ihk.de/blueprint/servlet/resource/blob/5453796/9f519bbca05c9e4b3fa662d2992cd4b2/merkblatt-muendliche-ergaenzungspruefung-wfw-data.pdf">IHK Potsdam</a>
+        </p>
+    </div>
+</footer>
 </html>
