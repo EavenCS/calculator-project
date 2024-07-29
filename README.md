@@ -12,5 +12,7 @@ Dieses Projekt ist ein Notenrechner für IT-Berufe, der die Ergebnisse der Absch
 ## Dateien
 * index.html: Die Haupt-HTML-Datei, die das Grundgerüst und die Struktur der Anwendung enthält.
 * assets/style.css: Die CSS-Datei zur Gestaltung der Benutzeroberfläche.
+* assets/dark-mode.css: Die CSS-Datei zur Gestaltung der Benutzeroberfläche im Dark Mode.
+* assets/darkMode.js: Die JavaScript-Datei, die die Logik zum Umschalten zwischen dem normalen Modus und dem Dark Mode enthält.
 * assets/script.js: Die JavaScript-Datei, die die gesamte Logik und Funktionalität der Anwendung enthält.
 * assets/icons/*: Verschiedene Icon-Dateien für das Favicon und andere Icons in der Anwendung.
