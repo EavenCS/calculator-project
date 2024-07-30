@@ -12,10 +12,19 @@
 </head>
 <body>
     <header>
-        <button id="darkModeToggle" class="dark-mode-toggle"><i class="fas fa-moon"></i></button>
+        <nav class="navbar">
+            <div class="navbar-content">
+                <a class="navbar-brand" href="#">
+                    <img src="assets/icons/favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
+                    Notenrechner-IT Berufe
+                </a>
+                <button id="toggle-dark-mode" class="dark-mode-button">
+                    <i id="dark-mode-icon" class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
     </header>
     <div class="container">
-        <h1><i class="fas fa-calculator"></i> Notenrechner-IT Berufe</h1>
         <p>
             Der Rechner ermittelt das Ergebnis Ihrer Abschlussprüfung. Analysiert werden auch Sonderfälle, die gemäß Prüfungsordnung zu einem Nichtbestehen führen können. Maximal sind in jedem Prüfungsteil 100 Punkte/Prozente erreichbar.
         </p>
@@ -77,6 +86,7 @@
         </div>
     </div>
     <script src="assets/app.js"></script>
+    <script src="assets/darkMode.js"></script>
 </body>
 
 <footer>
