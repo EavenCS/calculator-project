@@ -16,3 +16,13 @@ Dieses Projekt ist ein Notenrechner für IT-Berufe, der die Ergebnisse der Absch
 * assets/darkMode.js: Die JavaScript-Datei, die die Logik zum Umschalten zwischen dem normalen Modus und dem Dark Mode enthält.
 * assets/script.js: Die JavaScript-Datei, die die gesamte Logik und Funktionalität der Anwendung enthält.
 * assets/icons/*: Verschiedene Icon-Dateien für das Favicon und andere Icons in der Anwendung.
+
+## Todo
+
+- Erkennung von Ergänzungsprüfungen
+- UI-Überarbeitung
+-  Labels über den Eingabefeldern
+-  Andere Anordnung der UI, die per Button umschaltbar ist
+- Impressum
+- AdSense einbinden
+- Liveschalten
