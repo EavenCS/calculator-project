@@ -10,7 +10,7 @@ body {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 10px 20px;
     background-color: #ffffff;
@@ -20,6 +20,7 @@ body {
 .navbar-content {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .navbar-brand {
@@ -29,6 +30,7 @@ body {
     color: #333;
     font-size: 1.5em;
     font-weight: bold;
+    margin-right: auto;
 }
 
 .navbar-brand img {
@@ -46,10 +48,11 @@ body {
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s ease;
+    margin-right: 20px;
 }
 
 .dark-mode-button:hover {
-    background-color: #5040ff; /* A lighter shade for hover effect */
+    background-color: #5040ff;
 }
 
 #dark-mode-icon {
@@ -113,7 +116,7 @@ p {
     border-radius: 5px;
     background-color: #fff;
     color: #333;
-    box-sizing: border-box; /* Ensures padding is included in width */
+    box-sizing: border-box;
 }
 
 button {

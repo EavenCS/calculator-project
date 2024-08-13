@@ -97,10 +97,10 @@ function calculateTotalResult() {
     
     document.getElementById('totalResult').value = totalPoints.toFixed(1);
     
-    const useDecimalGrades = document.getElementById('useDecimalGrades').checked;
+    const useDecimalGrades = document.getElementById('useDecimalGrades');
     let totalGrade;
     
-    if (useDecimalGrades) {
+    if (useDecimalGrades && useDecimalGrades.checked) {
         totalGrade = calculateGrade(totalPoints * 10) / 10;
     } else {
         totalGrade = calculateGrade(totalPoints);
@@ -112,28 +112,57 @@ function calculateTotalResult() {
     displayPassOrFail(totalPoints, totalGrade);
 }
 
+function enableSupplementaryExamFields() {
+    document.getElementById('supplementPB3').disabled = false;
+    document.getElementById('supplementPB4').disabled = false;
+    document.getElementById('supplementPB5').disabled = false;
+}
+
+function disableSupplementaryExamFields() {
+    document.getElementById('supplementPB3').disabled = true;
+    document.getElementById('supplementPB4').disabled = true;
+    document.getElementById('supplementPB5').disabled = true;
+}
+
 function checkSupplementaryExam() {
     const pb3 = parseFloat(document.getElementById('examinationTwoPB3').value) || 0;
     const pb4 = parseFloat(document.getElementById('examinationTwoPB4').value) || 0;
     const pb5 = parseFloat(document.getElementById('examinationTwoPB5').value) || 0;
 
+    console.log("PB3 Punkte:", pb3);
+    console.log("PB4 Punkte:", pb4);
+    console.log("PB5 Punkte:", pb5);
+
     const conditionsMet = (pb3 >= 30 && pb3 < 50) || (pb4 >= 30 && pb4 < 50) || (pb5 >= 30 && pb5 < 50);
     const supplementaryText = document.getElementById('terminal-text');
 
+    if (!supplementaryText) {
+        console.error("Element mit ID 'terminal-text' nicht gefunden.");
+        return;
+    }
+
     if (conditionsMet) {
         supplementaryText.textContent = "Ergänzungsprüfung zulässig!";
+        console.log("Ergänzungsprüfung wird aktiviert.");
+        enableSupplementaryExamFields();
     } else {
         supplementaryText.textContent = "Ergänzungsprüfung nicht zulässig!";
+        console.log("Ergänzungsprüfung wird nicht aktiviert.");
+        disableSupplementaryExamFields();
     }
 }
 
 function displayPassOrFail(totalPoints, totalGrade) {
     const terminalText = document.getElementById('terminal-text');
 
-    if (totalPoints >= 50 && totalGrade <= 4.0) {
-        terminalText.textContent = "Bestanden";
+    if (terminalText) {
+        if (totalPoints >= 50 && totalGrade <= 4.0) {
+            terminalText.textContent = "Bestanden";
+        } else {
+            terminalText.textContent = "Nicht bestanden";
+        }
     } else {
-        terminalText.textContent = "Nicht bestanden";
+        console.error("Element mit ID 'terminal-text' nicht gefunden.");
     }
 }
 
@@ -163,13 +192,6 @@ function addEventListeners() {
             console.error(`Input field '${inputId}' not found.`);
         }
     });
-
-    const calculateButton = document.getElementById('calculateButton');
-    if (calculateButton) {
-        calculateButton.addEventListener('click', calculateExaminationTwoGrades);
-    } else {
-        console.error("Button 'calculateButton' not found.");
-    }
 
     const useDecimalGrades = document.getElementById('useDecimalGrades');
     if (useDecimalGrades) {
